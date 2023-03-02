@@ -1,0 +1,31 @@
+export const DarkTheme = {
+  palette: {
+    headerBackground: "#190033",
+    panelBackground: "#190033",
+    loginContainerBackground: "#190033",
+    registrationContainerBackground: "#190033",
+    loginPageBackground: "#01154B",
+    registrationPageBackground: "#01154B",
+    authTextColor: "white",
+    headerTextColor: "white",
+    mainPageBackground: "#01154B",
+    modalBackground: "grey",
+    modalTextColor: "black",
+    productCardBackground: "#B6620D",
+    filterTextColor: "White",
+    mobileMenuButton: "#B6620D",
+    mobileMenuTitle: "#190033",
+    mobileContentBackground: "#190033",
+    cartTextColor: "white",
+    cartBackground: "#190033",
+  },
+  globals: {
+    breakpoints: {
+      xs: "359px",
+      sm: "576px",
+      md: "768px",
+      cd: "1000px",
+      lg: "1920px",
+    },
+  },
+};
