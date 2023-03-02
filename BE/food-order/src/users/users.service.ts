@@ -7,15 +7,30 @@ import { UsersRepository } from './users.repository';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly usersRepository: UsersRepository) {}
+  constructor(private usersRepository: UsersRepository) {}
 
-  async getUserById(userId: string): Promise<User> {
+  async getUserById(userId: number): Promise<User> {
+    if (!userId) {
+      return null;
+    }
     return this.usersRepository.findOne({ userId });
+  }
+
+  findOne(userId: number) {
+    return this.usersRepository.findOne({ userId });
+  }
+
+  async getUsers(): Promise<User[]> {
+    return this.usersRepository.find({});
+  }
+
+  async find(email: string) {
+    return this.usersRepository.find({ email });
   }
 
   async createUser(email: string, password: string): Promise<User> {
     return this.usersRepository.create({
-      userId: uuidv4(),
+      userId: Math.random() * 10,
       email,
       password,
       name: '',
@@ -24,7 +39,7 @@ export class UsersService {
     });
   }
 
-  async updateUser(userId: string, userUpdates: UpdateUserDto): Promise<User> {
+  async updateUser(userId: number, userUpdates: UpdateUserDto): Promise<User> {
     return this.usersRepository.findOneAndUpdate({ userId }, userUpdates);
   }
 }

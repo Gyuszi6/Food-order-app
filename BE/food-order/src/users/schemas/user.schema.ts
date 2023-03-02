@@ -6,7 +6,7 @@ export type UserDoc = User & Document;
 @Schema()
 export class User {
   @Prop()
-  userId: string;
+  userId: number;
 
   @Prop({ unique: [true, 'email is already in use'] })
   email: string;
