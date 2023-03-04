@@ -22,6 +22,9 @@ export class User {
 
   @Prop()
   admin: boolean;
+
+  @Prop()
+  loggedIn: boolean;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

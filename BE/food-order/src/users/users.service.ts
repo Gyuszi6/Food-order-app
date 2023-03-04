@@ -36,6 +36,7 @@ export class UsersService {
       name: '',
       adress: [],
       admin: false,
+      loggedIn: false,
     });
   }
 

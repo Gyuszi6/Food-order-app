@@ -32,11 +32,12 @@ export class UsersController {
 
   @Get('/whoami')
   whoAmI(@Session() session: any) {
-    return this.usersService.getUserById(session.userId);
+    return this.usersService.getUserById(session.loggedIn);
   }
 
   @Post('/signout')
-  signOut(@Session() session: any) {
+  signOut(@Session() session: any, @Body() updateUserDto: UpdateUserDto) {
+    updateUserDto.loggedIn = false;
     session.userId = null;
   }
 
@@ -62,6 +63,7 @@ export class UsersController {
       createUserDto.email,
       createUserDto.password,
     );
+    user.loggedIn = true;
     session.userId = user.userId;
     return user;
   }
