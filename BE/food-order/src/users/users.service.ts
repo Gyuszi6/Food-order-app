@@ -16,6 +16,10 @@ export class UsersService {
     return this.usersRepository.findOne({ userId });
   }
 
+  async getUserByEmail(email: string): Promise<User> {
+    return this.usersRepository.findOne({ email });
+  }
+
   findOne(userId: number) {
     return this.usersRepository.findOne({ userId });
   }
@@ -34,13 +38,14 @@ export class UsersService {
       email,
       password,
       name: '',
-      adress: [],
+      postalCode: '',
+      city: '',
+      address: '',
       admin: false,
-      loggedIn: false,
     });
   }
 
-  async updateUser(userId: number, userUpdates: UpdateUserDto): Promise<User> {
-    return this.usersRepository.findOneAndUpdate({ userId }, userUpdates);
+  async updateUser(email: string, userUpdates: UpdateUserDto): Promise<User> {
+    return this.usersRepository.findOneAndUpdate({ email }, userUpdates);
   }
 }

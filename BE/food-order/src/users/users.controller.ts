@@ -20,9 +20,9 @@ export class UsersController {
     private authService: AuthService,
   ) {}
 
-  @Get(':userId')
-  async getUser(@Param('userId') userId: number): Promise<User> {
-    return this.usersService.getUserById(userId);
+  @Get(':email')
+  async getUser(@Param('email') email: string): Promise<User> {
+    return this.usersService.getUserByEmail(email);
   }
 
   @Get()
@@ -37,7 +37,6 @@ export class UsersController {
 
   @Post('/signout')
   signOut(@Session() session: any, @Body() updateUserDto: UpdateUserDto) {
-    updateUserDto.loggedIn = false;
     session.userId = null;
   }
 
@@ -63,16 +62,15 @@ export class UsersController {
       createUserDto.email,
       createUserDto.password,
     );
-    user.loggedIn = true;
     session.userId = user.userId;
     return user;
   }
 
-  @Patch(':userId')
+  @Patch(':email')
   async updateUser(
-    @Param('userId') userId: number,
+    @Param('email') email: string,
     @Body() updateUserDto: UpdateUserDto,
   ): Promise<User> {
-    return this.usersService.updateUser(userId, updateUserDto);
+    return this.usersService.updateUser(email, updateUserDto);
   }
 }

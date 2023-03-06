@@ -4,11 +4,10 @@ import EmailInput from "../../elements/inputs/EmailInput";
 import PasswordInput from "../../elements/inputs/PasswordInput";
 import { useTranslation } from "react-i18next";
 import { ErrorContainer, ErrorMessage, LoginButton } from "./styles";
-import { useSelector, useDispatch } from "react-redux";
-import { SET_LOGGED_IN } from "../../store/slices/AuthSlice";
-import { useNavigate } from "react-router-dom";
+import useLogin from "./hooks/useLogin";
 
 const LoginForm = () => {
+  const { login } = useLogin();
   const { t } = useTranslation();
   const loginSchema = yup.object().shape({
     email: yup
@@ -22,9 +21,7 @@ const LoginForm = () => {
       .trim()
       .matches(/^[A-Za-z0-9]{6,16}$/i, `${t("WRONG_PASSWORD")}`),
   });
-  const nav = useNavigate();
-  const { loggedIn } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
+
   return (
     <Formik
       initialValues={{
@@ -34,9 +31,8 @@ const LoginForm = () => {
       validateOnMount={true}
       enableReinitialize={true}
       validationSchema={loginSchema}
-      onSubmit={({ email, password }) => {
-        dispatch(SET_LOGGED_IN(!loggedIn));
-        nav("/home");
+      onSubmit={async (email, password) => {
+        await login(email, password);
       }}
     >
       {({ setFieldValue, errors, touched }) => (

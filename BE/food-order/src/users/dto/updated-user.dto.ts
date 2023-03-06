@@ -1,5 +1,6 @@
 export class UpdateUserDto {
-  adress: string[];
   name: string;
-  loggedIn: boolean;
+  postalCode: string;
+  city: string;
+  adress: string;
 }

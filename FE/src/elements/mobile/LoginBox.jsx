@@ -16,7 +16,11 @@ const LoginBox = () => {
   return (
     <MobileAuthPanel>
       <MobileAuthPanelHead>
-        <MobileAuthPanelButton onClick={() => setShowInput(!showInput)}>
+        <MobileAuthPanelButton
+          onClick={() => {
+            setShowInput(!showInput);
+          }}
+        >
           {!showInput && <BiRightArrow />}
           {showInput && <BiDownArrow />}
         </MobileAuthPanelButton>

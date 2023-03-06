@@ -4,6 +4,7 @@ const cookieSession = require('cookie-session');
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
   app.use(
     cookieSession({
       keys: ['dsadfsfda'],

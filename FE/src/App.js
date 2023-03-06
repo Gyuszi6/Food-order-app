@@ -6,6 +6,7 @@ import { DarkTheme } from "./theme/DarkTheme";
 import { useSelector } from "react-redux";
 import RegistrationPage from "./components/registrationPage/RegistrationPage";
 import LoginPage from "./components/loginPage/LoginPage";
+import ProfilePage from "./components/profilePage/ProfilePage";
 
 function App() {
   const { theme } = useSelector((state) => state.theme);
@@ -18,6 +19,7 @@ function App() {
             <Route path="/home" element={<HomePage />} />
             <Route path="/registration" element={<RegistrationPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
           </Routes>
         </BrowserRouter>
       </div>

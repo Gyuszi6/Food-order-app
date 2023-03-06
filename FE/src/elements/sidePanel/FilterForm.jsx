@@ -65,7 +65,7 @@ const FilterForm = () => {
           menuItemId="2"
           activeButtonId={isActive}
           onClick={() => {
-            dispatch(SET_TYPE("burger"));
+            dispatch(SET_TYPE("hamburger"));
             setIsActive("2");
           }}
         >
@@ -77,12 +77,12 @@ const FilterForm = () => {
           menuItemId="3"
           activeButtonId={isActive}
           onClick={() => {
-            dispatch(SET_TYPE("bowl"));
+            dispatch(SET_TYPE("gyros"));
             setIsActive("3");
           }}
         >
           {isActive === "3" && <MdOutlineArrowForwardIos />}
-          {t("BOWL")}
+          {t("GYROS")}
           {isActive === "3" && <MdOutlineArrowBackIos />}
         </TypeButton>
       </ButtonContainer>

@@ -17,14 +17,17 @@ export class User {
   @Prop()
   name: string;
 
-  @Prop([String])
-  adress: string[];
+  @Prop()
+  postalCode: string;
+
+  @Prop()
+  city: string;
+
+  @Prop()
+  address: string;
 
   @Prop()
   admin: boolean;
-
-  @Prop()
-  loggedIn: boolean;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

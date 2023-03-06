@@ -35,6 +35,16 @@ export const EmailInputField = styled.input`
   }
 `;
 
+export const ProfileInputField = styled.input`
+  box-sizing: border-box;
+  width: 160px;
+
+  @media screen and (max-width: ${({ theme }) =>
+      theme?.globals?.breakpoints?.xs}) {
+    width: 100px;
+  }
+`;
+
 export const PasswordInputField = styled.input`
   box-sizing: border-box;
   position: relative;

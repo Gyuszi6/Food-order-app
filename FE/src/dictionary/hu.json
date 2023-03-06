@@ -15,7 +15,7 @@
   "SHOW_ALL": "Minden étel",
   "PIZZA": "Pizzák",
   "BURGER": "Burgerek",
-  "BOWL": "Tálak",
+  "GYROS": "Gyros",
   "FILTER": "Szűrés",
   "RESET": "Visszaállít",
   "CART": "Kosár",
@@ -33,5 +33,17 @@
   "MISSING_PASSWORD": "Jelszó megadása kötelező",
   "WRONG_PASSWORD": "A jelszó 6-16 karaktert tartalmazzon",
   "MISSING_PASSWORD_AGAIN": "Jelszó újra megadása kötelező",
-  "WRONG_PASSWORD_AGAIN": "A jelszó 6-16 karaktert tartalmazzon"
+  "WRONG_PASSWORD_AGAIN": "A jelszó 6-16 karaktert tartalmazzon",
+  "SAVE": "Mentés",
+  "PROFILE": "Profil",
+  "NAME": "Név:",
+  "POSTAL_CODE": "Irányítószám:",
+  "CITY": "Város:",
+  "ADDRESS": "Cím:",
+  "NAME_ERROR": "Érvényes név megadása kötelező",
+  "POSTAL_CODE_ERROR": "Érvényes irányítószám megadása kötelező",
+  "CITY_ERROR": "Érvényes város megadása kötelező",
+  "ADDRESS_ERROR": "Érvényes cím megadása kötelező",
+  "REGISTRATION_SUCCESS": "Sikeres regisztráció",
+  "PROFILE_CHANGE_SUCCESS": "Sikeres adatmódosítás"
 }

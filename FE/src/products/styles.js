@@ -28,14 +28,14 @@ export const ProductCardField = styled.div`
 export const ProductCardImageContainer = styled.div`
   box-sizing: border-box;
   width: 250px;
-  height: 150px;
+  height: 130px;
   padding-right: 20px;
   padding-left: 20px;
 
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.sm}) {
     width: 250px;
-    height: 150px;
+    height: 130px;
     margin: auto;
   }
 `;
@@ -44,7 +44,7 @@ export const ProductCardTextContainer = styled.div`
   box-sizing: border-box;
   text-align: center;
   width: 250px;
-  height: 100px;
+  height: 90px;
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.sm}) {
     margin: auto;
@@ -58,6 +58,7 @@ export const ProductCardButtonContainer = styled.div`
   height: 100px;
   display: flex;
   justify-content: space-evenly;
+  margin-bottom: 0;
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.sm}) {
     margin: auto;
@@ -70,6 +71,12 @@ export const ProductImg = styled.img`
 `;
 
 export const ProductName = styled.h2``;
+
+export const ProductDetailsContainer = styled.div`
+  width: 100%;
+  text-align: center;
+  margin-top: -75px;
+`;
 
 export const ProductDetails = styled.p``;
 

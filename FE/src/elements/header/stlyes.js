@@ -41,6 +41,7 @@ export const LogoContainer = styled.div`
 export const Logo = styled.h2`
   margin: 0;
   color: ${({ theme }) => theme?.palette?.headerTextColor};
+  cursor: pointer;
 
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.md}) {

@@ -2,6 +2,7 @@ import {
   ProductCardButtonContainer,
   ProductCardButton,
   ProductCardField,
+  ProductDetailsContainer,
   ProductDetails,
   ProductCardImageContainer,
   ProductImg,
@@ -12,10 +13,12 @@ import { useTranslation } from "react-i18next";
 import { useAlert } from "../hooks/useAlert";
 import { useSelector, useDispatch } from "react-redux";
 import { SET_CART } from "../store/slices/CartSlice";
+import { useState } from "react";
 
-const ProductCard = ({ name, id, price, img }) => {
+const ProductCard = ({ name, id, price, img, description }) => {
   const { showErrorNotification, showSuccessNotification } = useAlert();
   const { loggedIn } = useSelector((state) => state.auth);
+  const [showDetails, setShowDetails] = useState(false);
   let { cart } = useSelector((state) => state.cart);
 
   const { t } = useTranslation();
@@ -50,8 +53,22 @@ const ProductCard = ({ name, id, price, img }) => {
         >
           {t("ADD_TO_CART")}
         </ProductCardButton>
-        <ProductCardButton>{t("DETAILS")}</ProductCardButton>
+        <ProductCardButton
+          onClick={() => {
+            setShowDetails(!showDetails);
+          }}
+        >
+          {t("DETAILS")}
+        </ProductCardButton>
       </ProductCardButtonContainer>
+      <ProductDetailsContainer>
+        {showDetails &&
+          (description.length < 50 ? (
+            <ProductDetails>{description}</ProductDetails>
+          ) : (
+            <ProductDetails>{description.slice(0, 50)}...</ProductDetails>
+          ))}
+      </ProductDetailsContainer>
     </ProductCardField>
   );
 };

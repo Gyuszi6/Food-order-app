@@ -18,19 +18,30 @@ import { useNavigate } from "react-router-dom";
 import SettingsForm from "./SettingsForm";
 import { BsCart4 } from "react-icons/bs";
 import { BiLogOut } from "react-icons/bi";
-import { useSelector, useDispatch } from "react-redux";
-import { SET_LOGGED_IN } from "../../store/slices/AuthSlice";
+import { useSelector } from "react-redux";
+import { useAlert } from "../../hooks/useAlert";
+import useHeader from "./hooks/useHeader";
+import useFoods from "../../products/hooks/useFoods";
 
 const Header = (props) => {
+  const { getFoods } = useFoods();
+  const { logout } = useHeader();
+  const { showErrorNotification } = useAlert();
   const nav = useNavigate();
   const { t } = useTranslation();
-  const dispatch = useDispatch();
   const { loggedIn } = useSelector((state) => state.auth);
 
   return (
     <HeadContainer>
       <LogoContainer>
-        <Logo>Food-Order-App</Logo>
+        <Logo
+          onClick={() => {
+            nav("/home");
+            getFoods();
+          }}
+        >
+          Food-Order-App
+        </Logo>
       </LogoContainer>
       <MobileMenuButtons>
         {loggedIn && (
@@ -41,7 +52,7 @@ const Header = (props) => {
 
             <MobileLogoutButton
               onClick={() => {
-                dispatch(SET_LOGGED_IN(!loggedIn));
+                logout();
               }}
             >
               <BiLogOut />
@@ -58,10 +69,14 @@ const Header = (props) => {
       <HeaderElementContainer>
         <MenuButton
           onClick={() => {
-            nav("/home");
+            if (loggedIn) {
+              nav("/profile");
+            } else {
+              showErrorNotification(t("CART_ERROR"));
+            }
           }}
         >
-          {t("HEADER_MAINPAGE")}
+          {t("PROFILE")}
         </MenuButton>
         {loggedIn && (
           <CartButton onClick={props.onShowCart}>
@@ -91,7 +106,7 @@ const Header = (props) => {
         {loggedIn && (
           <MenuButton
             onClick={() => {
-              dispatch(SET_LOGGED_IN(!loggedIn));
+              logout();
             }}
           >
             {t("LOG_OUT")}

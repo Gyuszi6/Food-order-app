@@ -4,9 +4,15 @@ import EmailInput from "../../elements/inputs/EmailInput";
 import PasswordInput from "../../elements/inputs/PasswordInput";
 import { useTranslation } from "react-i18next";
 import { RegistrationButton, ErrorContainer, ErrorMessage } from "./styles";
+import useRegister from "./hooks/useRegister";
+import { useNavigate } from "react-router-dom";
+import { useAlert } from "../../hooks/useAlert";
 
 const RegistrationForm = () => {
+  const { showSuccessNotification } = useAlert();
+  const nav = useNavigate();
   const { t } = useTranslation();
+  const { register } = useRegister();
   const registrationSchema = yup.object().shape({
     email: yup
       .string()
@@ -34,9 +40,14 @@ const RegistrationForm = () => {
       validateOnMount={true}
       enableReinitialize={true}
       validationSchema={registrationSchema}
-      onSubmit={({ email, password, rePassword }) =>
-        console.log("Registration")
-      }
+      onSubmit={async (email, password, rePassword) => {
+        await register(email, password, rePassword);
+        email = "";
+        password = "";
+        rePassword = "";
+        showSuccessNotification(t("REGISTRATION_SUCCESS"));
+        nav("/home");
+      }}
     >
       {({ setFieldValue, errors, touched }) => (
         <Form>

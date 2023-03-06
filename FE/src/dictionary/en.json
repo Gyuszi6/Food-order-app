@@ -15,7 +15,7 @@
   "SHOW_ALL": "All food",
   "PIZZA": "Pizzas",
   "BURGER": "Burgers",
-  "BOWL": "Bowls",
+  "GYROS": "Gyros",
   "FILTER": "Filter",
   "RESET": "Reset",
   "CART": "Cart",
@@ -33,5 +33,17 @@
   "MISSING_PASSWORD": "Please enter your password",
   "WRONG_PASSWORD": "Your password should contain 6-16 characters",
   "MISSING_PASSWORD_AGAIN": "Please enter your password again",
-  "WRONG_PASSWORD_AGAIN": "Your password should contain 6-16 characters"
+  "WRONG_PASSWORD_AGAIN": "Your password should contain 6-16 characters",
+  "SAVE": "Save",
+  "PROFILE": "Profile",
+  "NAME": "Name:",
+  "POSTAL_CODE": "Postal code:",
+  "CITY": "City:",
+  "ADDRESS": "Address:",
+  "NAME_ERROR": "Enter a valid name",
+  "POSTAL_CODE_ERROR": "Enter a valid postal code",
+  "CITY_ERROR": "Enter a valid city",
+  "ADDRESS_ERROR": "Enter a valid address",
+  "REGISTRATION_SUCCESS": "Successful registration",
+  "PROFILE_CHANGE_SUCCESS": "Data changed successfully"
 }

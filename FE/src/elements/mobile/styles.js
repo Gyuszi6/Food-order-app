@@ -44,6 +44,30 @@ export const MobileLoginPanelContent = styled.div`
   }
 `;
 
+export const MobileProfilePanelContent = styled.div`
+  display: flex;
+  margin: 0 auto 0 auto;
+  width: 95%;
+  height: 200px;
+  border: 1px black solid;
+  border-top: none;
+  box-sizing: border-box;
+  justify-content: center;
+  padding: 10px;
+  background-color: ${({ theme }) => theme?.palette?.mobileContentBackground};
+
+  animation: slide-down-auth 200ms;
+
+  @keyframes slide-down-auth {
+    from {
+      height: 0;
+    }
+    to {
+      height: 200;
+    }
+  }
+`;
+
 export const MobileRegistrationPanelContent = styled.div`
   display: flex;
   margin: 0 auto 0 auto;
