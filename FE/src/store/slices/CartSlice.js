@@ -23,6 +23,11 @@ const cartSlice = createSlice({
       state.totalAmount++;
       state.totalPrice += action.payload.price;
     },
+    SET_RESET_CART: (state, action) => {
+      state.cart = [];
+      state.totalPrice = 0;
+      state.totalAmount = 0;
+    },
     INCREMENT_QUANTITY: (state, action) => {
       const id = action.payload.id;
       const index = state.cart.findIndex((item) => item.id === id);
@@ -46,7 +51,11 @@ const cartSlice = createSlice({
   },
 });
 
-export const { SET_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY } =
-  cartSlice.actions;
+export const {
+  SET_CART,
+  INCREMENT_QUANTITY,
+  DECREMENT_QUANTITY,
+  SET_RESET_CART,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

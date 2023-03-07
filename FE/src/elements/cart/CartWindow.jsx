@@ -21,10 +21,14 @@ import {
   DECREMENT_QUANTITY,
 } from "../../store/slices/CartSlice";
 import { useTranslation } from "react-i18next";
+import useOrders from "./hooks/useOrders";
 
 export const CartWindow = (props) => {
   const dispatch = useDispatch();
+  const { createOrder } = useOrders();
   const { cart, totalAmount, totalPrice } = useSelector((state) => state.cart);
+  const price = Math.round(totalPrice * 100) / 100;
+
   const { t } = useTranslation();
 
   return (
@@ -62,12 +66,20 @@ export const CartWindow = (props) => {
             {t("TOTAL_AMOUNT")} {totalAmount}
           </CartItemTotalLabels>
           <CartItemTotalLabels>
-            {t("TOTAL_PRICE")} {totalPrice} $
+            {t("TOTAL_PRICE")} {price} $
           </CartItemTotalLabels>
         </CartTotalDetails>
       </CartTotalDetailContainer>
       <CartButtonContainer>
-        <CartModalButton>{t("PLACE_ORDER")}</CartModalButton>
+        <CartModalButton
+          onClick={async (props) => {
+            if (totalPrice > 0) {
+              await createOrder();
+            }
+          }}
+        >
+          {t("PLACE_ORDER")}
+        </CartModalButton>
         <CartModalButton onClick={props.onClose}>
           {t("EXIT_CART")}
         </CartModalButton>

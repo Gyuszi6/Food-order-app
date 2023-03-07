@@ -31,6 +31,11 @@ export const CartListItem = styled.div`
   padding-top: 5px;
 
   @media screen and (max-width: ${({ theme }) =>
+      theme?.globals?.breakpoints?.md}) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.sm}) {
     margin-left: -30px;
     margin-right: 10px;
@@ -43,8 +48,13 @@ export const CartItemName = styled.div`
   margin-left: 2px;
 
   @media screen and (max-width: ${({ theme }) =>
+      theme?.globals?.breakpoints?.md}) {
+    width: 46%;
+  }
+
+  @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.sm}) {
-    width: 40%;
+    width: 50%;
   }
 `;
 export const CartItemPrice = styled.div`
@@ -85,6 +95,16 @@ export const CartLabelContainer = styled.div`
 export const CartNameLabel = styled.div`
   width: 30%;
   margin-left: 3px;
+
+  @media screen and (max-width: ${({ theme }) =>
+      theme?.globals?.breakpoints?.md}) {
+    width: 60%;
+  }
+
+  @media screen and (max-width: ${({ theme }) =>
+      theme?.globals?.breakpoints?.sm}) {
+    width: 50%;
+  }
 `;
 export const CartPriceLabel = styled.div`
   width: 18%;
@@ -110,6 +130,12 @@ export const CartItemDetailContainer = styled.div`
   justify-content: center;
   box-sizing: border-box;
   border-bottom: 3px white solid;
+
+  @media screen and (max-width: ${({ theme }) =>
+      theme?.globals?.breakpoints?.cd}) {
+    height: 60px;
+    width: 100%;
+  }
 `;
 
 export const CartItemListContainer = styled.div`
@@ -125,6 +151,12 @@ export const CartTotalDetails = styled.div`
   justify-content: space-between;
   padding-right: 12px;
   padding-left: 12px;
+
+  @media screen and (max-width: ${({ theme }) =>
+      theme?.globals?.breakpoints?.cd}) {
+    font-size: 15px;
+    width: 40%;
+  }
 
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.sm}) {
@@ -161,7 +193,13 @@ export const CartModalButton = styled.button`
   cursor: pointer;
 `;
 
-export const CartItemTotalLabels = styled.p``;
+export const CartItemTotalLabels = styled.p`
+  font-size: 14px;
+  @media screen and (max-width: ${({ theme }) =>
+      theme?.globals?.breakpoints?.cd}) {
+    font-size: 12px;
+  }
+`;
 
 export const CartItemDetails = styled.div``;
 
