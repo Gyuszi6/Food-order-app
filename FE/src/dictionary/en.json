@@ -45,5 +45,12 @@
   "CITY_ERROR": "Enter a valid city",
   "ADDRESS_ERROR": "Enter a valid address",
   "REGISTRATION_SUCCESS": "Successful registration",
-  "PROFILE_CHANGE_SUCCESS": "Data changed successfully"
+  "PROFILE_CHANGE_SUCCESS": "Data changed successfully",
+  "FOOD_CHANGE_SUCCESS": "Data changed successfully",
+  "DESCRIPTION": "Description:",
+  "PRICE": "Price:",
+  "TYPE": "Type:",
+  "IMAGE": "Image name:",
+  "MODIFIE": "Modifie",
+  "CREATE_FOOD": "Create food"
 }

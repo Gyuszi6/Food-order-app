@@ -45,5 +45,12 @@
   "CITY_ERROR": "Érvényes város megadása kötelező",
   "ADDRESS_ERROR": "Érvényes cím megadása kötelező",
   "REGISTRATION_SUCCESS": "Sikeres regisztráció",
-  "PROFILE_CHANGE_SUCCESS": "Sikeres adatmódosítás"
+  "PROFILE_CHANGE_SUCCESS": "Sikeres adatmódosítás",
+  "FOOD_CHANGE_SUCCESS": "Sikeres adatmódosítás",
+  "DESCRIPTION": "Leírás:",
+  "PRICE": "Ár:",
+  "TYPE": "Típus:",
+  "IMAGE": "Kép megnevezése:",
+  "MODIFIE": "Mósodít",
+  "CREATE_FOOD": "Étel hozzáadása"
 }

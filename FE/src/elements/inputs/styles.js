@@ -25,6 +25,16 @@ export const Label = styled.p`
   color: ${({ theme }) => theme?.palette?.filterTextColor};
 `;
 
+export const FoodLabel = styled.p`
+  margin: 0;
+  color: ${({ theme }) => theme?.palette?.filterTextColor};
+
+  @media screen and (max-width: ${({ theme }) =>
+      theme?.globals?.breakpoints?.xs}) {
+    font-size: 12px;
+  }
+`;
+
 export const EmailInputField = styled.input`
   box-sizing: border-box;
   width: 160px;
@@ -42,6 +52,16 @@ export const ProfileInputField = styled.input`
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.xs}) {
     width: 100px;
+  }
+`;
+
+export const FoodInputField = styled.input`
+  box-sizing: border-box;
+  width: 160px;
+
+  @media screen and (max-width: ${({ theme }) =>
+      theme?.globals?.breakpoints?.xs}) {
+    width: 120px;
   }
 `;
 

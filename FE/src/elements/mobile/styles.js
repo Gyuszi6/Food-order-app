@@ -20,6 +20,17 @@ export const MobileAuthPanelHead = styled.div`
   background-color: ${({ theme }) => theme?.palette?.mobileMenuTitle};
 `;
 
+export const MobileFoodPanelHead = styled.div`
+  display: flex;
+  margin: 10px auto 0 auto;
+  width: 95%;
+  height: 30px;
+  justify-content: center;
+  border: 1px black solid;
+  box-sizing: border-box;
+  background-color: ${({ theme }) => theme?.palette?.mobileMenuTitle};
+`;
+
 export const MobileLoginPanelContent = styled.div`
   display: flex;
   margin: 0 auto 0 auto;

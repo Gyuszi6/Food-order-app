@@ -18,18 +18,22 @@ import { useNavigate } from "react-router-dom";
 import SettingsForm from "./SettingsForm";
 import { BsCart4 } from "react-icons/bs";
 import { BiLogOut } from "react-icons/bi";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useAlert } from "../../hooks/useAlert";
 import useHeader from "./hooks/useHeader";
 import useFoods from "../../products/hooks/useFoods";
+import FoodForm from "../../products/FoodForm";
+import { SET_CHANGE_FOOD_FORM } from "../../store/slices/FoodSlice";
 
 const Header = (props) => {
+  const dispatch = useDispatch();
   const { getFoods } = useFoods();
   const { logout } = useHeader();
   const { showErrorNotification } = useAlert();
   const nav = useNavigate();
   const { t } = useTranslation();
-  const { loggedIn } = useSelector((state) => state.auth);
+  const { loggedIn, isAdmin } = useSelector((state) => state.auth);
+  const { changeFoodForm, currentFoodId } = useSelector((state) => state.food);
 
   return (
     <HeadContainer>
@@ -67,17 +71,31 @@ const Header = (props) => {
         </MobileSettingsContainer>
       </MobileMenuButtons>
       <HeaderElementContainer>
-        <MenuButton
-          onClick={() => {
-            if (loggedIn) {
-              nav("/profile");
-            } else {
-              showErrorNotification(t("CART_ERROR"));
-            }
-          }}
-        >
-          {t("PROFILE")}
-        </MenuButton>
+        {isAdmin && (
+          <MenuButton
+            onClick={() => {
+              if (currentFoodId === 0) {
+                dispatch(SET_CHANGE_FOOD_FORM(!changeFoodForm));
+              }
+            }}
+          >
+            {t("CREATE_FOOD")}
+          </MenuButton>
+        )}
+        {changeFoodForm && <FoodForm />}
+        {!isAdmin && (
+          <MenuButton
+            onClick={() => {
+              if (loggedIn) {
+                nav("/profile");
+              } else {
+                showErrorNotification(t("CART_ERROR"));
+              }
+            }}
+          >
+            {t("PROFILE")}
+          </MenuButton>
+        )}
         {loggedIn && (
           <CartButton onClick={props.onShowCart}>
             <BsCart4></BsCart4>
