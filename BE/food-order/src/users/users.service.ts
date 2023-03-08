@@ -42,6 +42,7 @@ export class UsersService {
       city: '',
       address: '',
       admin: false,
+      loggedIn: false,
     });
   }
 

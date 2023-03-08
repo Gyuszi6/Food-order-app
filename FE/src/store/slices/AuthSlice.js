@@ -49,7 +49,7 @@ const authSlice = createSlice({
       localStorage.setItem("postalcode", JSON.stringify(action.payload));
     },
     SET_CITY: (state, action) => {
-      state.createSlice = action.payload;
+      state.city = action.payload;
       localStorage.setItem("city", JSON.stringify(action.payload));
     },
     SET_ADDRESS: (state, action) => {

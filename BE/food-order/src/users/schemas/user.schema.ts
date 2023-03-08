@@ -27,6 +27,9 @@ export class User {
   address: string;
 
   @Prop()
+  loggedIn: boolean;
+
+  @Prop()
   admin: boolean;
 }
 

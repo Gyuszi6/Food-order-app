@@ -3,4 +3,5 @@ export class UpdateUserDto {
   postalCode: string;
   city: string;
   adress: string;
+  loggedIn: boolean;
 }

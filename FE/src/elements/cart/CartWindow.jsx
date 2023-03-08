@@ -25,7 +25,7 @@ import useOrders from "./hooks/useOrders";
 
 export const CartWindow = (props) => {
   const dispatch = useDispatch();
-  const { createOrder } = useOrders();
+  const { createOrder, SendEmail } = useOrders();
   const { cart, totalAmount, totalPrice } = useSelector((state) => state.cart);
   const price = Math.round(totalPrice * 100) / 100;
 
@@ -75,6 +75,7 @@ export const CartWindow = (props) => {
           onClick={async (props) => {
             if (totalPrice > 0) {
               await createOrder();
+              await SendEmail();
             }
           }}
         >

@@ -9,6 +9,9 @@ export class Order {
   orderId: number;
 
   @Prop()
+  email: string;
+
+  @Prop()
   name: string;
 
   @Prop()

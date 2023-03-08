@@ -12,6 +12,7 @@ export class OrdersService {
   }
 
   async createOrder(
+    email: string,
     name: string,
     itemList: string[],
     address: string,
@@ -37,6 +38,7 @@ export class OrdersService {
     let formattedDate = `${year}.${month}.${day}-${hour}:${min}`;
     return this.ordersRepositroy.create({
       orderId: Math.random() * 10,
+      email,
       name,
       itemList,
       address: address,

@@ -36,8 +36,10 @@ export class UsersController {
   }
 
   @Post('/signout')
-  signOut(@Session() session: any, @Body() updateUserDto: UpdateUserDto) {
-    session.userId = null;
+  async signOut(@Session() session: any, @Body() createUserDto: CreateUserDto) {
+    const user = await this.usersService.getUserByEmail(createUserDto.email);
+    user.loggedIn = false;
+    return user;
   }
 
   @Post('/signup')
