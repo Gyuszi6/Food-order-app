@@ -35,7 +35,6 @@ const ProductCard = ({ name, id, price, img, description, foodtype }) => {
   const [showDetails, setShowDetails] = useState(false);
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  let { cart } = useSelector((state) => state.cart);
   const { currentFoodId, changeFoodForm } = useSelector((state) => state.food);
 
   const ItemData = {
@@ -66,26 +65,18 @@ const ProductCard = ({ name, id, price, img, description, foodtype }) => {
         <ProductDetails>{price} $</ProductDetails>
       </ProductCardTextContainer>
       <ProductCardButtonContainer>
-        <ProductCardButton
-          onClick={() => {
-            loggedIn
-              ? showSuccessNotification(t("CART_SUCCESS"))
-              : showErrorNotification(t("CART_ERROR"));
-            if (loggedIn) {
-              dispatch(SET_CART(ItemData));
-              console.log(cart);
-            }
-          }}
-        >
-          {t("ADD_TO_CART")}
-        </ProductCardButton>
         {!isAdmin && (
           <ProductCardButton
             onClick={() => {
-              setShowDetails(!showDetails);
+              loggedIn
+                ? showSuccessNotification(t("CART_SUCCESS"))
+                : showErrorNotification(t("CART_ERROR"));
+              if (loggedIn) {
+                dispatch(SET_CART(ItemData));
+              }
             }}
           >
-            {t("DETAILS")}
+            {t("ADD_TO_CART")}
           </ProductCardButton>
         )}
         {isAdmin && (
@@ -107,6 +98,13 @@ const ProductCard = ({ name, id, price, img, description, foodtype }) => {
             {t("MODIFIE")}
           </ProductCardButton>
         )}
+        <ProductCardButton
+          onClick={() => {
+            setShowDetails(!showDetails);
+          }}
+        >
+          {t("DETAILS")}
+        </ProductCardButton>
       </ProductCardButtonContainer>
       {changeFoodForm && <FoodForm />}
       <ProductDetailsContainer>

@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import RegistrationPage from "./components/registrationPage/RegistrationPage";
 import LoginPage from "./components/loginPage/LoginPage";
 import ProfilePage from "./components/profilePage/ProfilePage";
+import OrderPage from "./components/orderPage/OrderPage";
 
 function App() {
   const { theme } = useSelector((state) => state.theme);
@@ -20,6 +21,7 @@ function App() {
             <Route path="/registration" element={<RegistrationPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/orders" element={<OrderPage />} />
           </Routes>
         </BrowserRouter>
       </div>

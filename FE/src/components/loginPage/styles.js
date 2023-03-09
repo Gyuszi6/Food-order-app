@@ -46,6 +46,6 @@ export const ErrorMessage = styled.p`
 
   @media screen and (max-width: ${({ theme }) =>
     theme?.globals?.breakpoints?.sm}) {
-    font-size: 12px;
+    font-size: 10.5px;
     margin-bottom: 0;
 `;

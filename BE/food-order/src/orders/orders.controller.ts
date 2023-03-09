@@ -1,4 +1,4 @@
-import { Controller, Body, Get, Post } from '@nestjs/common';
+import { Controller, Body, Get, Post, Delete, Param } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { OrdersService } from './orders.service';
 import { MailerService } from '@nestjs-modules/mailer';
@@ -23,5 +23,10 @@ export class OrdersController {
       createOrderDto.totalPrice,
     );
     return order;
+  }
+
+  @Delete(':orderId')
+  async deleteFood(@Param('orderId') orderId: number): Promise<Order> {
+    return this.ordersService.deleteOrder(orderId);
   }
 }

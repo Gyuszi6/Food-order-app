@@ -46,4 +46,8 @@ export class OrdersService {
       date: formattedDate,
     });
   }
+
+  async deleteOrder(orderId: number): Promise<Order> {
+    return this.ordersRepositroy.findOneAndDelete({ orderId });
+  }
 }

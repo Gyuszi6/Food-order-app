@@ -21,9 +21,9 @@ export const LightTheme = {
   },
   globals: {
     breakpoints: {
-      xs: "359px",
+      xs: "361px",
       sm: "576px",
-      md: "768px",
+      md: "778px",
       cd: "1000px",
       lg: "1920px",
     },

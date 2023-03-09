@@ -52,5 +52,8 @@
   "TYPE": "Type:",
   "IMAGE": "Image name:",
   "MODIFIE": "Modifie",
-  "CREATE_FOOD": "Create food"
+  "CREATE_FOOD": "Create food",
+  "ORDERS": "Orders",
+  "DATE": "Date:",
+  "SUCCESSFUL_ORDER": "Successful order"
 }

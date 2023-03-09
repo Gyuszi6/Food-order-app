@@ -52,5 +52,8 @@
   "TYPE": "Típus:",
   "IMAGE": "Kép megnevezése:",
   "MODIFIE": "Mósodít",
-  "CREATE_FOOD": "Étel hozzáadása"
+  "CREATE_FOOD": "Étel hozzáadása",
+  "ORDERS": "Megrendelések",
+  "DATE": "Dátum:",
+  "SUCCESSFUL_ORDER": "Sikeres rendelés"
 }

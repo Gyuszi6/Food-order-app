@@ -28,4 +28,13 @@ export const AlertBox = styled.div`
     left: 0;
     font-size: 18px;
   }
+
+  @media screen and (max-width: ${({ theme }) =>
+      theme?.globals?.breakpoints?.sm}) {
+    color: ${({ theme }) => theme?.palette?.authCardTextColour};
+    width: 100%;
+    right: 0;
+    left: 0;
+    font-size: 14px;
+  }
 `;

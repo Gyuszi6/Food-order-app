@@ -28,4 +28,8 @@ export class OrdersRepository {
       new: true,
     });
   }
+
+  async findOneAndDelete(orderFilterQuery: FilterQuery<Order>): Promise<Order> {
+    return this.orderModel.findOneAndDelete(orderFilterQuery);
+  }
 }

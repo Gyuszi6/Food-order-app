@@ -22,12 +22,15 @@ import {
 } from "../../store/slices/CartSlice";
 import { useTranslation } from "react-i18next";
 import useOrders from "./hooks/useOrders";
+import { useAlert } from "../../hooks/useAlert";
 
 export const CartWindow = (props) => {
+  const { showSuccessNotification } = useAlert();
   const dispatch = useDispatch();
   const { createOrder, SendEmail } = useOrders();
   const { cart, totalAmount, totalPrice } = useSelector((state) => state.cart);
   const price = Math.round(totalPrice * 100) / 100;
+  const closeCart = props.onClose;
 
   const { t } = useTranslation();
 
@@ -72,8 +75,10 @@ export const CartWindow = (props) => {
       </CartTotalDetailContainer>
       <CartButtonContainer>
         <CartModalButton
-          onClick={async (props) => {
+          onClick={async () => {
             if (totalPrice > 0) {
+              closeCart();
+              showSuccessNotification(t("SUCCESSFUL_ORDER"));
               await createOrder();
               await SendEmail();
             }

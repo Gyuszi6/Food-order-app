@@ -24,6 +24,7 @@ import useHeader from "./hooks/useHeader";
 import useFoods from "../../products/hooks/useFoods";
 import FoodForm from "../../products/FoodForm";
 import { SET_CHANGE_FOOD_FORM } from "../../store/slices/FoodSlice";
+import { RiMoneyPoundCircleFill } from "react-icons/ri";
 
 const Header = (props) => {
   const dispatch = useDispatch();
@@ -50,9 +51,16 @@ const Header = (props) => {
       <MobileMenuButtons>
         {loggedIn && (
           <>
-            <MobileCartButton onClick={props.onShowCart}>
-              <BsCart4 />
-            </MobileCartButton>
+            {!isAdmin && (
+              <MobileCartButton onClick={props.onShowCart}>
+                <BsCart4 />
+              </MobileCartButton>
+            )}
+            {isAdmin && (
+              <MobileCartButton onClick={() => nav("/orders")}>
+                <RiMoneyPoundCircleFill />
+              </MobileCartButton>
+            )}
 
             <MobileLogoutButton
               onClick={() => {
@@ -75,6 +83,7 @@ const Header = (props) => {
           <MenuButton
             onClick={() => {
               if (currentFoodId === 0) {
+                nav("/home");
                 dispatch(SET_CHANGE_FOOD_FORM(!changeFoodForm));
               }
             }}
@@ -96,11 +105,22 @@ const Header = (props) => {
             {t("PROFILE")}
           </MenuButton>
         )}
-        {loggedIn && (
+        {!isAdmin && loggedIn && (
           <CartButton onClick={props.onShowCart}>
             <BsCart4></BsCart4>
             {t("CART")}
             <BsCart4></BsCart4>
+          </CartButton>
+        )}
+        {loggedIn && isAdmin && (
+          <CartButton
+            onClick={() => {
+              if (!changeFoodForm) {
+                nav("/orders");
+              }
+            }}
+          >
+            {t("ORDERS")}
           </CartButton>
         )}
         {!loggedIn && (

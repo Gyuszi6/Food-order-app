@@ -14,13 +14,22 @@ export const ProductCardField = styled.div`
   margin-left: 20px;
   margin-bottom: 20px;
   width: 250px;
-  height: 350px;
+  height: 370px;
   background: ${({ theme }) => theme?.palette?.productCardBackground};
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.sm}) {
     margin-left: auto;
     margin-right: auto;
     width: 350px;
+    height: 350px;
+    padding-top: 10px;
+  }
+
+  @media screen and (max-width: ${({ theme }) =>
+      theme?.globals?.breakpoints?.xs}) {
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
     height: 350px;
     padding-top: 10px;
   }
@@ -47,6 +56,7 @@ export const ProductCardTextContainer = styled.div`
   text-align: center;
   width: 250px;
   height: 90px;
+  margin-top: -25px;
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.sm}) {
     margin-left: auto;
@@ -64,6 +74,7 @@ export const ProductCardButtonContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 0;
+  margin-top: 20px;
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.sm}) {
     margin: auto;
@@ -84,7 +95,12 @@ export const ProductDetailsContainer = styled.div`
   margin-top: -75px;
 `;
 
-export const ProductDetails = styled.p``;
+export const ProductDetails = styled.p`
+  @media screen and (max-width: ${({ theme }) =>
+      theme?.globals?.breakpoints?.sm}) {
+    margin-top: 30px;
+  }
+`;
 
 export const ProductCardButton = styled.button`
   width: 35%;
@@ -107,7 +123,15 @@ export const DeleteButtonContainer = styled.div`
       theme?.globals?.breakpoints?.sm}) {
     width: 40px;
     height: 40px;
-    margin-left: 260px;
+    margin-left: 270px;
+    border-radius: 20px;
+  }
+
+  @media screen and (max-width: ${({ theme }) =>
+      theme?.globals?.breakpoints?.xs}) {
+    width: 40px;
+    height: 40px;
+    margin-left: 200px;
     border-radius: 20px;
   }
 `;
@@ -161,14 +185,18 @@ export const FoodFormButton = styled.button`
 `;
 
 export const ExitFoodFormButton = styled.button`
-  display: none;
-
+  display: flex;
+  position: fixed;
+  z-index: 30;
+  top: 102px;
+  right: 0;
+  cursor: pointer;
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.sm}) {
     display: flex;
     position: fixed;
     z-index: 30;
-    top: 160px;
+    top: 152px;
     right: 0;
   }
 `;

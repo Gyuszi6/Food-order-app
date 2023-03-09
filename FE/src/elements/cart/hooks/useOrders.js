@@ -2,7 +2,7 @@ import { ApiInstance } from "../../../api/api";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_RESET_CART } from "../../../store/slices/CartSlice";
 
-const useOrders = () => {
+const useOrders = (props) => {
   const dispatch = useDispatch();
   const { cart, totalPrice } = useSelector((state) => state.cart);
   const { currentEmail, name, postalCode, city, address } = useSelector(

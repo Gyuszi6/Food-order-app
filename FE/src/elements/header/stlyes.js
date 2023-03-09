@@ -29,7 +29,9 @@ export const LogoContainer = styled.div`
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.md}) {
     margin-top: -10px;
-    width: 100px;
+    width: 120px;
+    padding: 0;
+    text-align: left;
   }
 
   @media screen and (max-width: ${({ theme }) =>
@@ -46,7 +48,7 @@ export const Logo = styled.h2`
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.md}) {
     margin-left: -10px;
-    font-size: 20px;
+    font-size: 18px;
   }
 
   @media screen and (max-width: ${({ theme }) =>
@@ -226,14 +228,23 @@ export const MobileCartButton = styled.button`
   border: none;
   font-size: 35px;
   color: ${({ theme }) => theme?.palette?.headerTextColor};
+  margin-top: 1px;
 `;
 
 export const CartButton = styled.button`
+  display: flex;
   width: 120px;
-  font-size: 22px;
+  font-size: 16px;
   padding: 2px;
   margin-right: 10px;
   margin-left: 10px;
+  justify-content: space-evenly;
+  padding-top: 6px;
+  font-weight: bold;
+  @media screen and (max-width: ${({ theme }) =>
+      theme?.globals?.breakpoints?.md}) {
+    width: 90px;
+  }
 
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.sm}) {

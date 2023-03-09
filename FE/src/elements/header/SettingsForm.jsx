@@ -31,7 +31,7 @@ const SettingsForm = () => {
           {t("HEADER_LANGUAGE")}
         </LanguageButton>
       )}
-      {language === "hu" && (
+      {(language === "hu" || language === "hu-HU") && (
         <LanguageButton onClick={() => changeLanguage("en")}>
           {t("HEADER_LANGUAGE")}
         </LanguageButton>

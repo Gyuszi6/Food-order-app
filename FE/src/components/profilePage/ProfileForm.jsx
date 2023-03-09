@@ -10,11 +10,24 @@ import {
   MobileProfileContainer,
 } from "./styles";
 import { useAlert } from "../../hooks/useAlert";
+import { useSelector } from "react-redux";
+import useLogin from "../loginPage/hooks/useLogin";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProfileForm = () => {
+  const nav = useNavigate();
   const { t } = useTranslation();
   const { changeProfile } = useProfile();
   const { showSuccessNotification } = useAlert();
+  const { name, postalCode, city, address } = useSelector(
+    (state) => state.auth
+  );
+  const { getCurrentUserData } = useLogin();
+
+  useEffect(() => {
+    getCurrentUserData();
+  }, [getCurrentUserData]);
 
   const profileSchema = yup.object().shape({
     name: yup
@@ -42,10 +55,10 @@ const ProfileForm = () => {
   return (
     <Formik
       initialValues={{
-        name: "",
-        postalCode: "",
-        city: "",
-        address: "",
+        name: name,
+        postalCode: postalCode,
+        city: city,
+        address: address,
       }}
       validateOnMount={true}
       enableReinitialize={true}
@@ -53,6 +66,7 @@ const ProfileForm = () => {
       onSubmit={async (name, postalCode, city, address) => {
         await changeProfile(name, postalCode, city, address);
         showSuccessNotification(t("PROFILE_CHANGE_SUCCESS"));
+        nav("/home");
       }}
     >
       {({ setFieldValue, errors, touched }) => (
