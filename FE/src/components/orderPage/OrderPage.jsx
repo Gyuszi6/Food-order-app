@@ -30,8 +30,10 @@ import {
 } from "../../store/slices/OrderSlice";
 import { BiCheck } from "react-icons/bi";
 import { useTranslation } from "react-i18next";
+import useLogin from "../loginPage/hooks/useLogin";
 
 const OrderPage = () => {
+  const { getCurrentUserData } = useLogin();
   const { t } = useTranslation();
   const { getAllOrders, deleteOrder } = useOrders();
   const dispatch = useDispatch();
@@ -43,6 +45,8 @@ const OrderPage = () => {
     currentTotalPrice,
   } = useSelector((state) => state.order);
   const [showItems, setShowItems] = useState(false);
+
+  getCurrentUserData();
 
   useEffect(() => {
     const interval = setInterval(() => {

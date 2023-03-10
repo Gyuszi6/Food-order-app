@@ -56,6 +56,7 @@ const useLogin = () => {
         const response = await ApiInstance.get(`users/${currentEmail}`);
         const data = response.data;
         if (response.data.loggedIn === true) {
+          dispatch(SET_LOGGED_IN(data.loggedIn));
           dispatch(SET_NAME(data.name));
           dispatch(SET_ADMIN(data.admin));
           dispatch(SET_POSTAL_CODE(data.postalCode));

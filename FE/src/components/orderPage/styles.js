@@ -90,7 +90,7 @@ export const NameLabelcontainer = styled.div`
 `;
 export const AddressLabelcontainer = styled.div`
   box-sizing: border-box;
-  margin-right: 15px;
+  margin-right: 5px;
   width: 24%;
 
   @media screen and (max-width: ${({ theme }) =>

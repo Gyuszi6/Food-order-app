@@ -34,9 +34,20 @@ export class EmailController {
     } else {
       day = date.getDate().toString();
     }
+    let hour = '';
+    if (date.getHours() < 10) {
+      hour = `0${date.getHours()}`;
+    } else {
+      hour = date.getHours().toString();
+    }
+    let min = '';
+    if (date.getMinutes() < 10) {
+      min = `0${date.getMinutes()}`;
+    } else {
+      min = date.getMinutes().toString();
+    }
     let year = date.getFullYear();
-    let hour = date.getHours();
-    let min = date.getMinutes();
+
     let formattedDate = `${year}.${month}.${day}-${hour}:${min}`;
 
     const createFoodList = (name, foodList, address, totalPrice) => {
