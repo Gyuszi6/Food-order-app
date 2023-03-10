@@ -55,5 +55,11 @@
   "CREATE_FOOD": "Create food",
   "ORDERS": "Orders",
   "DATE": "Date:",
-  "SUCCESSFUL_ORDER": "Successful order"
+  "SUCCESSFUL_ORDER": "Successful order",
+  "USER_NOT_FOUND": "User not found",
+  "BAD_PASSWORD": "Bad password",
+  "EMAIL_IN_USE": "Email in use",
+  "PASSWORDS_DO_NOT_MACH": "Passwords do not mach",
+  "MOBILE_PROFILE_ERROR": "Please check your datas",
+  "EMPTY_PROFILE_ERROR": "Please enter your personal datas before"
 }

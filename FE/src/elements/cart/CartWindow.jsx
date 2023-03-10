@@ -25,14 +25,21 @@ import useOrders from "./hooks/useOrders";
 import { useAlert } from "../../hooks/useAlert";
 
 export const CartWindow = (props) => {
-  const { showSuccessNotification } = useAlert();
+  const { showSuccessNotification, showErrorNotification } = useAlert();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const { createOrder, SendEmail } = useOrders();
   const { cart, totalAmount, totalPrice } = useSelector((state) => state.cart);
+  const { name, postalCode, city, address } = useSelector(
+    (state) => state.auth
+  );
   const price = Math.round(totalPrice * 100) / 100;
   const closeCart = props.onClose;
+  let validProfile = false;
 
-  const { t } = useTranslation();
+  if (name !== "" && postalCode !== "" && city !== "" && address !== "") {
+    validProfile = true;
+  }
 
   return (
     <CartModal onClose={props.onClose}>
@@ -76,11 +83,14 @@ export const CartWindow = (props) => {
       <CartButtonContainer>
         <CartModalButton
           onClick={async () => {
-            if (totalPrice > 0) {
+            if (totalPrice > 0 && validProfile) {
               closeCart();
               showSuccessNotification(t("SUCCESSFUL_ORDER"));
               await createOrder();
               await SendEmail();
+            } else {
+              closeCart();
+              showErrorNotification(t("EMPTY_PROFILE_ERROR"));
             }
           }}
         >

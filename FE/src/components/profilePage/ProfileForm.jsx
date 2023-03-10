@@ -8,6 +8,7 @@ import {
   ErrorContainer,
   ErrorMessage,
   MobileProfileContainer,
+  MobileErrorMessage,
 } from "./styles";
 import { useAlert } from "../../hooks/useAlert";
 import { useSelector } from "react-redux";
@@ -106,7 +107,13 @@ const ProfileForm = () => {
                 setFieldValue={setFieldValue}
               />
             </div>
+
             <ErrorContainer>
+              {Object.entries(errors).length > 0 && (
+                <MobileErrorMessage>
+                  {t("MOBILE_PROFILE_ERROR")}
+                </MobileErrorMessage>
+              )}
               {Object.entries(errors).map(
                 ([name, errorKey]) =>
                   touched[name] && (

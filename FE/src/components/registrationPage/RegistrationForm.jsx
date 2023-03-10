@@ -5,12 +5,8 @@ import PasswordInput from "../../elements/inputs/PasswordInput";
 import { useTranslation } from "react-i18next";
 import { RegistrationButton, ErrorContainer, ErrorMessage } from "./styles";
 import useRegister from "./hooks/useRegister";
-import { useNavigate } from "react-router-dom";
-import { useAlert } from "../../hooks/useAlert";
 
 const RegistrationForm = () => {
-  const { showSuccessNotification } = useAlert();
-  const nav = useNavigate();
   const { t } = useTranslation();
   const { register } = useRegister();
   const registrationSchema = yup.object().shape({
@@ -42,11 +38,6 @@ const RegistrationForm = () => {
       validationSchema={registrationSchema}
       onSubmit={async (email, password, rePassword) => {
         await register(email, password, rePassword);
-        email = "";
-        password = "";
-        rePassword = "";
-        showSuccessNotification(t("REGISTRATION_SUCCESS"));
-        nav("/home");
       }}
     >
       {({ setFieldValue, errors, touched }) => (

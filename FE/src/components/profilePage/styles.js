@@ -41,7 +41,7 @@ export const ProfileButton = styled.button`
 
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.sm}) {
-    margin-top: 10px;
+    margin-top: 20px;
   }
 `;
 
@@ -51,11 +51,12 @@ export const ErrorContainer = styled.div`
   margin-top: 60px;
   margin-left: 140px;
   position: fixed;
-  height: 20px;
 
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.sm}) {
-    display: none;
+    position: absolute;
+    top: 245px;
+    margin: 0;
   }
 `;
 
@@ -65,6 +66,17 @@ export const ErrorMessage = styled.p`
 
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.sm}) {
-    font-size: 12px;
+    display: none;
+  }
+`;
+
+export const MobileErrorMessage = styled.p`
+  display: none;
+
+  @media screen and (max-width: ${({ theme }) =>
+      theme?.globals?.breakpoints?.sm}) {
+    display: flex;
+    color: red;
+    justify-content: center;
   }
 `;

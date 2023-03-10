@@ -55,5 +55,11 @@
   "CREATE_FOOD": "Étel hozzáadása",
   "ORDERS": "Megrendelések",
   "DATE": "Dátum:",
-  "SUCCESSFUL_ORDER": "Sikeres rendelés"
+  "SUCCESSFUL_ORDER": "Sikeres rendelés",
+  "USER_NOT_FOUND": "A felhasználó nem található",
+  "BAD_PASSWORD": "Hibás jelszó",
+  "EMAIL_IN_USE": "Foglalt email",
+  "PASSWORDS_DO_NOT_MACH": "A jelszavak nem egyeznek",
+  "MOBILE_PROFILE_ERROR": "Kérlek ellenőrizd az adataidat",
+  "EMPTY_PROFILE_ERROR": "Személyes adatok megadása kötelező"
 }

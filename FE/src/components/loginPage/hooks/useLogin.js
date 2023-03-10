@@ -11,10 +11,14 @@ import {
 } from "../../../store/slices/AuthSlice";
 import { useNavigate } from "react-router-dom";
 import { useCallback, useEffect } from "react";
+import { useAlert } from "../../../hooks/useAlert";
+import { useTranslation } from "react-i18next";
 
 const useLogin = () => {
   const nav = useNavigate();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
+  const { showErrorNotification } = useAlert();
   const { currentEmail } = useSelector((state) => state.auth);
 
   const login = useCallback(
@@ -32,10 +36,15 @@ const useLogin = () => {
         dispatch(SET_CURRENT_EMAIL(email));
         nav("/home");
       } catch (error) {
-        console.log(error);
+        if (error.response.data.message === "user not found") {
+          showErrorNotification(t("USER_NOT_FOUND"));
+        }
+        if (error.response.data.message === "bad password") {
+          showErrorNotification(t("BAD_PASSWORD"));
+        }
       }
     },
-    [dispatch, nav]
+    [dispatch, nav, showErrorNotification, t]
   );
 
   const getCurrentUserData = useCallback(async () => {
