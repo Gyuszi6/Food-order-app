@@ -13,8 +13,8 @@ import {
   SET_DELETE_TYPE,
   SET_MIN_PRICE,
   SET_MAX_PRICE,
+  SET_CURRENT_ACTIVE,
 } from "../../store/slices/TypeSlice";
-import { useState } from "react";
 import {
   MdOutlineArrowForwardIos,
   MdOutlineArrowBackIos,
@@ -30,60 +30,73 @@ const filterSchema = yup.object().shape({
 });
 
 const FilterForm = () => {
-  const { minPrice, maxPrice } = useSelector((state) => state.type);
+  const { minPrice, maxPrice, currentActive } = useSelector(
+    (state) => state.type
+  );
   const dispatch = useDispatch();
-  const [isActive, setIsActive] = useState("0");
   const { t } = useTranslation();
   return (
     <FoodFilterContainer>
       <ButtonContainer>
         <TypeButton
           menuItemId="0"
-          activeButtonId={isActive}
+          activeButtonId={currentActive}
           onClick={() => {
             dispatch(SET_DELETE_TYPE());
-            setIsActive("0");
+            dispatch(SET_CURRENT_ACTIVE("0"));
           }}
         >
-          {isActive === "0" && <MdOutlineArrowForwardIos />}
+          {currentActive === "0" && <MdOutlineArrowForwardIos />}
           {t("SHOW_ALL")}
-          {isActive === "0" && <MdOutlineArrowBackIos />}
+          {currentActive === "0" && <MdOutlineArrowBackIos />}
         </TypeButton>
         <TypeButton
           menuItemId="1"
-          activeButtonId={isActive}
+          activeButtonId={currentActive}
           onClick={() => {
             dispatch(SET_TYPE("pizza"));
-            setIsActive("1");
+            dispatch(SET_CURRENT_ACTIVE("1"));
           }}
         >
-          {isActive === "1" && <MdOutlineArrowForwardIos />}
+          {currentActive === "1" && <MdOutlineArrowForwardIos />}
           {t("PIZZA")}
-          {isActive === "1" && <MdOutlineArrowBackIos />}
+          {currentActive === "1" && <MdOutlineArrowBackIos />}
         </TypeButton>
         <TypeButton
           menuItemId="2"
-          activeButtonId={isActive}
+          activeButtonId={currentActive}
           onClick={() => {
             dispatch(SET_TYPE("hamburger"));
-            setIsActive("2");
+            dispatch(SET_CURRENT_ACTIVE("2"));
           }}
         >
-          {isActive === "2" && <MdOutlineArrowForwardIos />}
+          {currentActive === "2" && <MdOutlineArrowForwardIos />}
           {t("BURGER")}
-          {isActive === "2" && <MdOutlineArrowBackIos />}
+          {currentActive === "2" && <MdOutlineArrowBackIos />}
         </TypeButton>
         <TypeButton
           menuItemId="3"
-          activeButtonId={isActive}
+          activeButtonId={currentActive}
           onClick={() => {
-            dispatch(SET_TYPE("gyros"));
-            setIsActive("3");
+            dispatch(SET_TYPE("bowl"));
+            dispatch(SET_CURRENT_ACTIVE("3"));
           }}
         >
-          {isActive === "3" && <MdOutlineArrowForwardIos />}
-          {t("GYROS")}
-          {isActive === "3" && <MdOutlineArrowBackIos />}
+          {currentActive === "3" && <MdOutlineArrowForwardIos />}
+          {t("BOWL")}
+          {currentActive === "3" && <MdOutlineArrowBackIos />}
+        </TypeButton>
+        <TypeButton
+          menuItemId="4"
+          activeButtonId={currentActive}
+          onClick={() => {
+            dispatch(SET_TYPE("other"));
+            dispatch(SET_CURRENT_ACTIVE("4"));
+          }}
+        >
+          {currentActive === "4" && <MdOutlineArrowForwardIos />}
+          {t("OTHER")}
+          {currentActive === "4" && <MdOutlineArrowBackIos />}
         </TypeButton>
       </ButtonContainer>
       <PriceFilterContainer>

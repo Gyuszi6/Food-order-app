@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  type: ["gyros", "hamburger", "pizza"],
+  type: ["bowl", "hamburger", "pizza", "other"],
   minPrice: "",
   maxPrice: "",
+  currentActive: "0",
 };
 
 const typeSlice = createSlice({
@@ -15,7 +16,7 @@ const typeSlice = createSlice({
       state.type.push(action.payload);
     },
     SET_DELETE_TYPE: (state, action) => {
-      state.type = ["gyros", "hamburger", "pizza"];
+      state.type = ["bowl", "hamburger", "pizza", "other"];
     },
     SET_MIN_PRICE: (state, action) => {
       state.minPrice = action.payload;
@@ -23,10 +24,18 @@ const typeSlice = createSlice({
     SET_MAX_PRICE: (state, action) => {
       state.maxPrice = action.payload;
     },
+    SET_CURRENT_ACTIVE: (state, action) => {
+      state.currentActive = action.payload;
+    },
   },
 });
 
-export const { SET_TYPE, SET_DELETE_TYPE, SET_MIN_PRICE, SET_MAX_PRICE } =
-  typeSlice.actions;
+export const {
+  SET_TYPE,
+  SET_DELETE_TYPE,
+  SET_MIN_PRICE,
+  SET_MAX_PRICE,
+  SET_CURRENT_ACTIVE,
+} = typeSlice.actions;
 
 export default typeSlice.reducer;

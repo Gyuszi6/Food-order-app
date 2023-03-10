@@ -77,8 +77,11 @@ export const ProductCardButtonContainer = styled.div`
   margin-top: 20px;
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.sm}) {
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
     height: 80px;
+    margin-bottom: 30px;
   }
 `;
 
@@ -98,7 +101,7 @@ export const ProductDetailsContainer = styled.div`
 export const ProductDetails = styled.p`
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.sm}) {
-    margin-top: 30px;
+    margin-top: 10px;
   }
 `;
 

@@ -15,7 +15,7 @@
   "SHOW_ALL": "Minden étel",
   "PIZZA": "Pizzák",
   "BURGER": "Burgerek",
-  "GYROS": "Gyros",
+  "BOWL": "Tálak",
   "FILTER": "Szűrés",
   "RESET": "Visszaállít",
   "CART": "Kosár",
@@ -61,5 +61,6 @@
   "EMAIL_IN_USE": "Foglalt email",
   "PASSWORDS_DO_NOT_MACH": "A jelszavak nem egyeznek",
   "MOBILE_PROFILE_ERROR": "Kérlek ellenőrizd az adataidat",
-  "EMPTY_PROFILE_ERROR": "Személyes adatok megadása kötelező"
+  "EMPTY_PROFILE_ERROR": "Személyes adatok megadása kötelező",
+  "OTHER": "Egyéb"
 }

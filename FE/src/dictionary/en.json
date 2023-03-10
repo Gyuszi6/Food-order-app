@@ -15,7 +15,7 @@
   "SHOW_ALL": "All food",
   "PIZZA": "Pizzas",
   "BURGER": "Burgers",
-  "GYROS": "Gyros",
+  "BOWL": "Bowls",
   "FILTER": "Filter",
   "RESET": "Reset",
   "CART": "Cart",
@@ -61,5 +61,6 @@
   "EMAIL_IN_USE": "Email in use",
   "PASSWORDS_DO_NOT_MACH": "Passwords do not mach",
   "MOBILE_PROFILE_ERROR": "Please check your datas",
-  "EMPTY_PROFILE_ERROR": "Please enter your personal datas before"
+  "EMPTY_PROFILE_ERROR": "Please enter your personal datas before",
+  "OTHER": "Other"
 }

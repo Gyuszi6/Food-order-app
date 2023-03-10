@@ -9,6 +9,11 @@ export const PanelContainer = styled.div`
 export const ButtonContainer = styled.div`
   display: block;
   padding: 6px;
+
+  @media screen and (max-width: ${({ theme }) =>
+      theme?.globals?.breakpoints?.sm}) {
+    padding: 0 0 0 6px;
+  }
 `;
 
 const activeTypeButton = css`
