@@ -48,7 +48,8 @@ export const Logo = styled.h2`
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.md}) {
     margin-left: -10px;
-    font-size: 18px;
+    font-size: 16px;
+    margin-top: -3px;
   }
 
   @media screen and (max-width: ${({ theme }) =>
@@ -243,7 +244,7 @@ export const CartButton = styled.button`
   font-weight: bold;
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.md}) {
-    width: 90px;
+    width: 120px;
   }
 
   @media screen and (max-width: ${({ theme }) =>

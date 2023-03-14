@@ -11,6 +11,7 @@ export const Content = styled.div`
   padding-left: 10px;
   overflow-y: scroll;
   overflow-x: hidden;
+
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.cd}) {
     width: 80vh;
@@ -90,17 +91,17 @@ export const NameLabelcontainer = styled.div`
 `;
 export const AddressLabelcontainer = styled.div`
   box-sizing: border-box;
-  margin-right: 5px;
+  margin-right: 15px;
   width: 24%;
 
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.cd}) {
-    margin-right: 0;
+    margin-right: -3px;
   }
 
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.md}) {
-    margin-right: 15px;
+    margin-right: 11px;
   }
 `;
 export const PriceLabelcontainer = styled.div`

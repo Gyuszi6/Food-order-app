@@ -13,6 +13,7 @@ export const ButtonContainer = styled.div`
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.sm}) {
     padding: 0 0 0 6px;
+    margin-top: -14px;
   }
 `;
 
@@ -73,7 +74,7 @@ export const PriceFilterButton = styled.button`
 
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.sm}) {
-    width: 70px;
+    width: 80px;
   }
 
   @media screen and (max-width: ${({ theme }) =>

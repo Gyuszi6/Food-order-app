@@ -30,7 +30,7 @@ export const ProductCardField = styled.div`
     margin-left: auto;
     margin-right: auto;
     width: 250px;
-    height: 350px;
+    height: 380px;
     padding-top: 10px;
   }
 `;
@@ -61,7 +61,7 @@ export const ProductCardTextContainer = styled.div`
       theme?.globals?.breakpoints?.sm}) {
     margin-left: auto;
     margin-right: auto;
-    margin-top: -20px;
+    margin-top: -40px;
     height: 90px;
   }
 `;

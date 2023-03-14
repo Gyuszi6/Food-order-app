@@ -27,8 +27,7 @@ export const Label = styled.p`
 
 export const FoodLabel = styled.p`
   margin: 0;
-  color: ${({ theme }) => theme?.palette?.filterTextColor};
-
+  color: white;
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.xs}) {
     font-size: 12px;

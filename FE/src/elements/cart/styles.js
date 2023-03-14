@@ -46,7 +46,7 @@ export const CartItemName = styled.div`
   width: 30%;
   padding-top: 5px;
   margin-left: 2px;
-
+  font-weight: bold;
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.md}) {
     width: 46%;
@@ -60,10 +60,12 @@ export const CartItemName = styled.div`
 export const CartItemPrice = styled.div`
   width: 20%;
   padding-top: 5px;
+  font-weight: bold;
 `;
 export const CartItemQuantity = styled.div`
   width: 30%;
   padding-top: 5px;
+  font-weight: bold;
 
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.sm}) {
@@ -73,10 +75,12 @@ export const CartItemQuantity = styled.div`
 export const CartItemIncrement = styled.div`
   width: 10%;
   padding-top: 5px;
+  font-weight: bold;
 `;
 export const CartItemDecrement = styled.div`
   width: 10%;
   padding-top: 5px;
+  font-weight: bold;
 `;
 
 export const CartLabelContainer = styled.div`
@@ -95,6 +99,7 @@ export const CartLabelContainer = styled.div`
 export const CartNameLabel = styled.div`
   width: 30%;
   margin-left: 3px;
+  font-weight: bold;
 
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.md}) {
@@ -108,24 +113,35 @@ export const CartNameLabel = styled.div`
 `;
 export const CartPriceLabel = styled.div`
   width: 18%;
+  font-weight: bold;
+
+  @media screen and (max-width: ${({ theme }) =>
+      theme?.globals?.breakpoints?.md}) {
+    width: 18%;
+    margin-left: -12px;
+    margin-right: 13px;
+  }
 
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.sm}) {
-    width: 4%;
+    width: 12%;
+    margin-left: 1px;
   }
 `;
 export const CartQuantityLabel = styled.div`
   width: 38%;
+  font-weight: bold;
 
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.sm}) {
     width: 22%;
+    margin-right: 4px;
   }
 `;
 
 export const CartItemDetailContainer = styled.div`
   width: 90%;
-  height: 40px;
+  height: 50px;
   display: flex;
   justify-content: center;
   box-sizing: border-box;
@@ -134,7 +150,7 @@ export const CartItemDetailContainer = styled.div`
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.cd}) {
     height: 60px;
-    width: 100%;
+    width: 90%;
   }
 `;
 
@@ -151,6 +167,7 @@ export const CartTotalDetails = styled.div`
   justify-content: space-between;
   padding-right: 12px;
   padding-left: 12px;
+  font-weight: bold;
 
   @media screen and (max-width: ${({ theme }) =>
       theme?.globals?.breakpoints?.cd}) {
@@ -163,6 +180,7 @@ export const CartTotalDetails = styled.div`
     border-right: none;
     width: 50%;
     font-size: 14px;
+    display: block;
   }
 `;
 
@@ -191,6 +209,8 @@ export const CartModalButton = styled.button`
   margin: 20px auto 30px auto;
   justify-content: center;
   cursor: pointer;
+  font-weight: bold;
+  border-radius: 8px;
 `;
 
 export const CartItemTotalLabels = styled.p`
