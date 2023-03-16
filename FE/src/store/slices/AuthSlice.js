@@ -12,6 +12,7 @@ const initialState = {
   postalCode: "",
   city: "",
   address: "",
+  isLoading: false,
 };
 
 const authSlice = createSlice({
@@ -41,6 +42,9 @@ const authSlice = createSlice({
     SET_ADDRESS: (state, action) => {
       state.address = action.payload;
     },
+    SET_IS_LOADING: (state, action) => {
+      state.isLoading = action.payload;
+    },
   },
 });
 
@@ -52,6 +56,7 @@ export const {
   SET_CITY,
   SET_ADDRESS,
   SET_NAME,
+  SET_IS_LOADING,
 } = authSlice.actions;
 
 export default authSlice.reducer;

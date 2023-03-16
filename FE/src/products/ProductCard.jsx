@@ -109,10 +109,10 @@ const ProductCard = ({ name, id, price, img, description, foodtype }) => {
       {changeFoodForm && <FoodForm />}
       <ProductDetailsContainer>
         {showDetails &&
-          (description.length < 45 ? (
+          (description.length < 70 ? (
             <ProductDetails>{description}</ProductDetails>
           ) : (
-            <ProductDetails>{description.slice(0, 45)}...</ProductDetails>
+            <ProductDetails>{description.slice(0, 70)}...</ProductDetails>
           ))}
       </ProductDetailsContainer>
     </ProductCardField>

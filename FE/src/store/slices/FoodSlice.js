@@ -9,6 +9,7 @@ const initialState = {
   currentType: "",
   currentDescription: "",
   changeFoodForm: false,
+  isLoading: false,
 };
 
 const foodSlice = createSlice({
@@ -39,6 +40,9 @@ const foodSlice = createSlice({
     SET_CHANGE_FOOD_FORM: (state, action) => {
       state.changeFoodForm = action.payload;
     },
+    SET_IS_LOADING: (state, action) => {
+      state.isLoading = action.payload;
+    },
   },
 });
 
@@ -51,6 +55,7 @@ export const {
   SET_CURRENT_PRICE,
   SET_CURRENT_TYPE,
   SET_CHANGE_FOOD_FORM,
+  SET_IS_LOADING,
 } = foodSlice.actions;
 
 export default foodSlice.reducer;

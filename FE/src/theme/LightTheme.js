@@ -18,6 +18,7 @@ export const LightTheme = {
     mobileContentBackground: "#00cccc",
     cartTextColor: "black",
     cartBackground: "#00cccc",
+    spinner: "white",
   },
   globals: {
     breakpoints: {

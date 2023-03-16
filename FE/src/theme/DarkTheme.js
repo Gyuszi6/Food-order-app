@@ -18,6 +18,7 @@ export const DarkTheme = {
     mobileContentBackground: "#190033",
     cartTextColor: "white",
     cartBackground: "#190033",
+    spinner: "grey",
   },
   globals: {
     breakpoints: {

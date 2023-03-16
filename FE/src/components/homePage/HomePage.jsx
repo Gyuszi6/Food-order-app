@@ -5,14 +5,14 @@ import FoodBox from "../../elements/mobile/FoodBox";
 import RegistrationBox from "../../elements/mobile/RegistrationBox";
 import Products from "../../products/Products";
 import MainLayout from "../layouts/mainLayout/MainLayout";
-import { HomePageContainer } from "./styles";
+import { HomePageContainer, Spinner } from "./styles";
 import { useSelector } from "react-redux";
 import useLogin from "../loginPage/hooks/useLogin";
 import FoodForm from "../../products/FoodForm";
 
 const HomePage = () => {
   const { loggedIn, isAdmin } = useSelector((state) => state.auth);
-  const { changeFoodForm } = useSelector((state) => state.food);
+  const { changeFoodForm, isLoading } = useSelector((state) => state.food);
   const { getCurrentUserData } = useLogin();
 
   getCurrentUserData();
@@ -20,13 +20,14 @@ const HomePage = () => {
   return (
     <MainLayout>
       <HomePageContainer>
+        {isLoading && <Spinner />}
         {!loggedIn && <LoginBox />}
         {!loggedIn && <RegistrationBox />}
         {!isAdmin && loggedIn && <ProfileBox />}
         {loggedIn && isAdmin && <FoodBox />}
         {loggedIn && isAdmin && changeFoodForm && <FoodForm />}
         <FilterBox />
-        <Products />
+        {<Products />}
       </HomePageContainer>
     </MainLayout>
   );

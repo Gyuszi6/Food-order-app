@@ -11,6 +11,7 @@ import {
   MobileSettingsButton,
   CartButton,
   LogoContainer,
+  Spinner,
 } from "./stlyes";
 import { BiMenu } from "react-icons/bi";
 import { useTranslation } from "react-i18next";
@@ -33,7 +34,7 @@ const Header = (props) => {
   const { showErrorNotification } = useAlert();
   const nav = useNavigate();
   const { t } = useTranslation();
-  const { loggedIn, isAdmin } = useSelector((state) => state.auth);
+  const { loggedIn, isAdmin, isLoading } = useSelector((state) => state.auth);
   const { changeFoodForm, currentFoodId } = useSelector((state) => state.food);
 
   return (
@@ -49,7 +50,8 @@ const Header = (props) => {
         </Logo>
       </LogoContainer>
       <MobileMenuButtons>
-        {loggedIn && (
+        {isLoading && <Spinner />}
+        {!isLoading && loggedIn && (
           <>
             {!isAdmin && (
               <MobileCartButton onClick={props.onShowCart}>
@@ -79,7 +81,8 @@ const Header = (props) => {
         </MobileSettingsContainer>
       </MobileMenuButtons>
       <HeaderElementContainer>
-        {isAdmin && (
+        {isLoading && <Spinner />}
+        {isAdmin && loggedIn && !isLoading && (
           <MenuButton
             onClick={() => {
               if (currentFoodId === 0) {
@@ -92,7 +95,7 @@ const Header = (props) => {
           </MenuButton>
         )}
         {changeFoodForm && <FoodForm />}
-        {!isAdmin && (
+        {!isAdmin && loggedIn && !isLoading && (
           <MenuButton
             onClick={() => {
               if (loggedIn) {
@@ -105,14 +108,14 @@ const Header = (props) => {
             {t("PROFILE")}
           </MenuButton>
         )}
-        {!isAdmin && loggedIn && (
+        {!isAdmin && loggedIn && !isLoading && (
           <CartButton onClick={props.onShowCart}>
             <BsCart4></BsCart4>
             {t("CART")}
             <BsCart4></BsCart4>
           </CartButton>
         )}
-        {loggedIn && isAdmin && (
+        {loggedIn && isAdmin && !isLoading && (
           <CartButton
             onClick={() => {
               if (!changeFoodForm) {
@@ -141,7 +144,7 @@ const Header = (props) => {
             {t("HEADER_LOGIN")}
           </MenuButton>
         )}
-        {loggedIn && (
+        {loggedIn && !isLoading && (
           <MenuButton
             onClick={() => {
               logout();
