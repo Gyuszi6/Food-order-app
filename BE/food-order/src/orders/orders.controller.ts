@@ -1,4 +1,12 @@
-import { Controller, Body, Get, Post, Delete, Param } from '@nestjs/common';
+import {
+  Controller,
+  Body,
+  Get,
+  Post,
+  Delete,
+  Param,
+  Patch,
+} from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { OrdersService } from './orders.service';
 import { MailerService } from '@nestjs-modules/mailer';
@@ -23,6 +31,14 @@ export class OrdersController {
       createOrderDto.totalPrice,
     );
     return order;
+  }
+
+  @Patch(':orderId')
+  async updateOrder(
+    @Param('orderId') orderId: number,
+    @Body() createOrderDto: CreateOrderDto,
+  ): Promise<Order> {
+    return this.ordersService.updateOrder(orderId, createOrderDto);
   }
 
   @Delete(':orderId')

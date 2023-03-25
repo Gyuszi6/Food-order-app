@@ -1,25 +1,12 @@
 import { Controller, Get, Post, Query, Body } from '@nestjs/common/decorators';
 import { MailerService } from '@nestjs-modules/mailer';
 import { CreateOrderDto } from './dto/create-order.dto';
-import { CreateFoodDto } from 'src/foods/dto/create-food.dto';
 
 @Controller('email')
 export class EmailController {
   constructor(private mailService: MailerService) {}
 
-  @Get('test')
-  async getTestMail(@Query('toemail') toemail) {
-    await this.mailService.sendMail({
-      to: toemail,
-      from: 'foodorderapp.2023@gmail.com',
-      subject: 'First email',
-      text: 'First email text',
-    });
-    return 'success';
-  }
-
-  @Post('/order')
-  async createOrderMessage(@Body() createOrderDto: CreateOrderDto) {
+  getDate() {
     let date = new Date();
 
     let month = '';
@@ -49,7 +36,55 @@ export class EmailController {
     let year = date.getFullYear();
 
     let formattedDate = `${year}.${month}.${day}-${hour}:${min}`;
+    return formattedDate;
+  }
+  @Get('test')
+  async getTestMail(@Query('toemail') toemail) {
+    await this.mailService.sendMail({
+      to: toemail,
+      from: 'foodorderapp.2023@gmail.com',
+      subject: 'First email',
+      text: 'First email text',
+    });
+    return 'success';
+  }
 
+  @Post('/order-ready')
+  async createFinalOrderMessage(@Body() createOrderDto: CreateOrderDto) {
+    const createFinalMessage = (name) => {
+      let text = `<h2>Dear ${name}</h2> \n
+      <p>Thank you for your patience, your food is ready for delivery.</p> \n
+      <p>Based on your given address, your food should be there in 30 minutes.</p> \n
+      <h3>Enjoy your meal!</h3>`;
+      return text;
+    };
+    await this.mailService.sendMail({
+      to: createOrderDto.email,
+      from: 'foodorderapp.2023@gmail.com',
+      subject: `${this.getDate()} FoodOrderApp`,
+      html: `${createFinalMessage(createOrderDto.name)}`,
+    });
+  }
+
+  @Post('/order-create')
+  async createOrderMessage(@Body() createOrderDto: CreateOrderDto) {
+    const createFirstMessage = (name) => {
+      let text = `<h2>Dear ${name}</h2> \n
+      <p>our chefs have started preparing your food.</p> \n
+      <p>We will notify you as soon as your food is ready </p>
+      `;
+      return text;
+    };
+    await this.mailService.sendMail({
+      to: createOrderDto.email,
+      from: 'foodorderapp.2023@gmail.com',
+      subject: `${this.getDate()} FoodOrderApp`,
+      html: `${createFirstMessage(createOrderDto.name)}`,
+    });
+  }
+
+  @Post('/order-processed')
+  async createOrderProcessedMessage(@Body() createOrderDto: CreateOrderDto) {
     const createFoodList = (name, foodList, address, totalPrice) => {
       let msg = `<h2>Your order list:</h2>`;
       msg += `<ul>`;
@@ -58,12 +93,12 @@ export class EmailController {
       });
       msg += `</ul>`;
       let emailText = `<h2>Dear ${name}</h2> \n
-      <p>Your order has been processed</p> \n
+      <p>Your order has been processed.</p> \n
       <p>your delivery address: ${address}</p> \n
       ${msg} \n
       <p>The final price: ${totalPrice}</p> \n
       <p>If you find any error in the datas above please contact us.</p> \n
-      <h3>Enjoy your meal</h3>`;
+      <p>We will let you know when our chefs have started preparing your food, it may take a few minutes.</p>`;
 
       return emailText;
     };
@@ -71,7 +106,7 @@ export class EmailController {
     await this.mailService.sendMail({
       to: createOrderDto.email,
       from: 'foodorderapp.2023@gmail.com',
-      subject: `${formattedDate} FoodOrderApp`,
+      subject: `${this.getDate()} FoodOrderApp`,
       html: `${createFoodList(
         createOrderDto.name,
         createOrderDto.itemList,

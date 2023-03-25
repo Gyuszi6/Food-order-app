@@ -54,7 +54,15 @@ export class OrdersService {
       address: address,
       totalPrice,
       date: formattedDate,
+      state: 'pending',
     });
+  }
+
+  async updateOrder(
+    orderId: number,
+    orderUpdates: CreateOrderDto,
+  ): Promise<Order> {
+    return this.ordersRepositroy.findOneAndUpdate({ orderId }, orderUpdates);
   }
 
   async deleteOrder(orderId: number): Promise<Order> {

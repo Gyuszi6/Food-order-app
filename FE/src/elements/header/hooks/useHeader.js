@@ -36,11 +36,6 @@ const useHeader = () => {
       dispatch(SET_ADDRESS(""));
       dispatch(SET_CURRENT_EMAIL(""));
       localStorage.removeItem("loggedin");
-      localStorage.removeItem("admin");
-      localStorage.removeItem("postalcode");
-      localStorage.removeItem("city");
-      localStorage.removeItem("address");
-      localStorage.removeItem("name");
       localStorage.removeItem("email");
       nav("/home");
     } catch (error) {

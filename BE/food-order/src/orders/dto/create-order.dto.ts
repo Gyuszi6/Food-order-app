@@ -5,4 +5,5 @@ export class CreateOrderDto {
   address: string;
   totalPrice: string;
   date: string;
+  state: string;
 }

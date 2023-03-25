@@ -29,13 +29,20 @@ import {
   SET_CURRENT_TOTAL_PRICE,
 } from "../../store/slices/OrderSlice";
 import { BiCheck } from "react-icons/bi";
+import { BsQuestionLg } from "react-icons/bs";
 import { useTranslation } from "react-i18next";
 import useLogin from "../loginPage/hooks/useLogin";
 
 const OrderPage = () => {
   const { getCurrentUserData } = useLogin();
   const { t } = useTranslation();
-  const { getAllOrders, deleteOrder } = useOrders();
+  const {
+    getAllOrders,
+    deleteOrder,
+    sendEmail,
+    changeOrderState,
+    sendLastEmail,
+  } = useOrders();
   const dispatch = useDispatch();
   const {
     orders,
@@ -130,14 +137,29 @@ const OrderPage = () => {
                         })}
                     </ItemListConatiner>
                   )}
-                  <FinishedOrderButton
-                    onClick={async () => {
-                      await deleteOrder(order.orderId);
-                      await getAllOrders();
-                    }}
-                  >
-                    <BiCheck />
-                  </FinishedOrderButton>
+                  {order.state === "pending" && (
+                    <FinishedOrderButton
+                      onClick={async () => {
+                        await sendEmail(order.email, order.name);
+                        await changeOrderState(order.orderId);
+                        await getAllOrders();
+                      }}
+                    >
+                      <BsQuestionLg />
+                    </FinishedOrderButton>
+                  )}
+
+                  {order.state === "preparing" && (
+                    <FinishedOrderButton
+                      onClick={async () => {
+                        await sendLastEmail(order.email, order.name);
+                        await deleteOrder(order.orderId);
+                        await getAllOrders();
+                      }}
+                    >
+                      <BiCheck />
+                    </FinishedOrderButton>
+                  )}
                 </OrderItem>
               );
             })}

@@ -23,11 +23,49 @@ const useOrders = () => {
     }
   };
 
+  const changeOrderState = async (id) => {
+    try {
+      await ApiInstance.patch(`/orders/${id}`, {
+        state: "preparing",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const sendLastEmail = async (email, name) => {
+    try {
+      await ApiInstance.post("/email/order-ready", {
+        email: email,
+        name: name,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const sendEmail = async (email, name) => {
+    try {
+      await ApiInstance.post("/email/order-create", {
+        email: email,
+        name: name,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getAllOrders();
   }, [getAllOrders]);
 
-  return { getAllOrders, deleteOrder };
+  return {
+    getAllOrders,
+    deleteOrder,
+    sendEmail,
+    changeOrderState,
+    sendLastEmail,
+  };
 };
 
 export default useOrders;

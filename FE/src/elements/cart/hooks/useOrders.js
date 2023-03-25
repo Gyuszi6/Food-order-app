@@ -45,7 +45,8 @@ const useOrders = (props) => {
         let email = currentEmail.split('"')[2];
         email = email.substring(0, email.length - 1);
         const formattedAddress = `${postalCode} ${city} ${address}`;
-        await ApiInstance.post("/email/order", {
+
+        await ApiInstance.post("/email/order-processed", {
           email: email,
           name: name,
           itemList: cart,
@@ -54,7 +55,7 @@ const useOrders = (props) => {
         });
         dispatch(SET_RESET_CART());
       } else {
-        await ApiInstance.post("/email/order", {
+        await ApiInstance.post("/email/order-processed", {
           email: currentEmail,
           name: name,
           itemList: cart,
