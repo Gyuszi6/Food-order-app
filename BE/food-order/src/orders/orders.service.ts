@@ -24,7 +24,7 @@ export class OrdersService {
     if (date.getMonth() + 1 < 10) {
       month = `0${date.getMonth() + 1}`;
     } else {
-      month = date.getMonth().toString();
+      month = (date.getMonth() + 1).toString();
     }
     let day = '';
     if (date.getDate() < 10) {

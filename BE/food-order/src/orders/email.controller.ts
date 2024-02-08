@@ -42,7 +42,7 @@ export class EmailController {
   async getTestMail(@Query('toemail') toemail) {
     await this.mailService.sendMail({
       to: toemail,
-      from: 'foodorderapp.2023@gmail.com',
+      from: 'foodorderapp.2024@gmail.com',
       subject: 'First email',
       text: 'First email text',
     });
@@ -60,7 +60,7 @@ export class EmailController {
     };
     await this.mailService.sendMail({
       to: createOrderDto.email,
-      from: 'foodorderapp.2023@gmail.com',
+      from: 'foodorderapp.2024@gmail.com',
       subject: `${this.getDate()} FoodOrderApp`,
       html: `${createFinalMessage(createOrderDto.name)}`,
     });
@@ -77,7 +77,7 @@ export class EmailController {
     };
     await this.mailService.sendMail({
       to: createOrderDto.email,
-      from: 'foodorderapp.2023@gmail.com',
+      from: 'foodorderapp.2024@gmail.com',
       subject: `${this.getDate()} FoodOrderApp`,
       html: `${createFirstMessage(createOrderDto.name)}`,
     });
@@ -105,7 +105,7 @@ export class EmailController {
 
     await this.mailService.sendMail({
       to: createOrderDto.email,
-      from: 'foodorderapp.2023@gmail.com',
+      from: 'foodorderapp.2024@gmail.com',
       subject: `${this.getDate()} FoodOrderApp`,
       html: `${createFoodList(
         createOrderDto.name,
